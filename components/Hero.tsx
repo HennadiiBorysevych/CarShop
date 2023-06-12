@@ -1,10 +1,10 @@
 "use client";
+
 import Image from "next/image";
 import CustomButton from "./CustomButton";
 
-type Props = {};
 
-const Hero = (props: Props) => {
+const Hero = () => {
   const handleScroll = () => {};
   return (
     <div className="hero">
