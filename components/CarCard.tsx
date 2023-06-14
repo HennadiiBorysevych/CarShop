@@ -2,8 +2,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ICar } from "@/types";
-import { calculateCarRent } from "@/utils";
+import { calculateCarRent, generateCarImageUrl } from "@/utils";
 import CustomButton from "./CustomButton";
+import CarDetails from "./CarDetails";
 
 interface CardCardProps {
   car: ICar;
@@ -28,7 +29,7 @@ const CarCard = ({ car }: CardCardProps) => {
       </p>
       <div className="relative w-full h-40 my-3 object-contain">
         <Image
-          src="/hero.png"
+          src={generateCarImageUrl(car)}
           alt="car model"
           fill
           priority
@@ -67,7 +68,11 @@ const CarCard = ({ car }: CardCardProps) => {
           />
         </div>
       </div>
-      
+      <CarDetails
+        isOpen={isOpen}
+        closeModal={() => setIsOpen(false)}
+        car={car}
+      />
     </div>
   );
 };
