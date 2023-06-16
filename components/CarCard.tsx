@@ -11,12 +11,13 @@ interface CardCardProps {
 }
 
 const CarCard = ({ car }: CardCardProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const { city_mpg, model, year, make, transmission, drive } = car;
   const carRent = calculateCarRent(city_mpg, year);
   return (
-    <div className="car-card group">
+    <li className="car-card group">
       <div className="car-card__content">
         <h2 className="car-card__content-title">
           {make} {model}
@@ -37,8 +38,8 @@ const CarCard = ({ car }: CardCardProps) => {
         />
       </div>
       <div className="relative flex w-full mt-2">
-        <div className="flex group-hover:invisible w-full justify-between text-gray">
-          <div className="flex flex-col justify-center items-center gap-2">
+        <ul className="flex group-hover:invisible w-full justify-between text-gray">
+          <li className="flex flex-col justify-center items-center gap-2">
             <Image
               src="/steering-wheel.svg"
               width={20}
@@ -48,16 +49,16 @@ const CarCard = ({ car }: CardCardProps) => {
             <p className="text-[14px]">
               {transmission === "a" ? "Automatic" : "Manual"}
             </p>
-          </div>
-          <div className="flex flex-col justify-center items-center gap-2">
+          </li>
+          <li className="flex flex-col justify-center items-center gap-2">
             <Image src="/tire.svg" width={20} height={20} alt="tire" />
             <p className="text-[14px]">{drive.toUpperCase()}</p>
-          </div>
-          <div className="flex flex-col justify-center items-center gap-2">
+          </li>
+          <li className="flex flex-col justify-center items-center gap-2">
             <Image src="/gas.svg" width={20} height={20} alt="gas" />
             <p className="text-[14px]">{city_mpg} MPG</p>
-          </div>
-        </div>
+          </li>
+        </ul>
         <div className="car-card__btn-container">
           <CustomButton
             title="View More"
@@ -73,7 +74,7 @@ const CarCard = ({ car }: CardCardProps) => {
         closeModal={() => setIsOpen(false)}
         car={car}
       />
-    </div>
+    </li>
   );
 };
 
